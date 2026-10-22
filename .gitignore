@@ -1,0 +1,32 @@
+# Python 가상환경 및 캐시 제외
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+
+# 환경 변수 및 보안 키 파일 (GitHub 공개 금지)
+.env
+.env.local
+*.pem
+*.key
+
+# 로컬 벡터 데이터베이스 및 캐시
+chroma_db/
+.chroma/
+
+# 에이전트 및 에디터 임시 파일
+.agents/
+.claude/
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS 시스템 임시 파일
+.DS_Store
+Thumbs.db
+desktop.ini
