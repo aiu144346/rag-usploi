@@ -32,12 +32,75 @@ st.markdown("""
         font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif !important;
     }
     
+    /* 상단 헤더 안전 여백 확보: Streamlit 고정 상단바(Share, Deploy 바 등 약 60px) 아래로 온전히 노출되도록 패딩 조정 */
     .block-container {
-        padding-top: 1.2rem !important;
+        padding-top: 5rem !important;
         padding-bottom: 5rem !important;
-        padding-left: 1rem !important;
-        padding-right: 1rem !important;
+        padding-left: 1.25rem !important;
+        padding-right: 1.25rem !important;
         max-width: 960px !important;
+    }
+
+    @media (max-width: 768px) {
+        .block-container {
+            padding-top: 4.4rem !important;
+            padding-left: 0.85rem !important;
+            padding-right: 0.85rem !important;
+        }
+    }
+
+    /* Streamlit 상단 고정 헤더(Share, Deploy 바)와 탭 겹침 완벽 방지 */
+    header[data-testid="stHeader"] {
+        background-color: rgba(255, 255, 255, 0.95) !important;
+        backdrop-filter: blur(12px) !important;
+        z-index: 99 !important;
+        border-bottom: 1px solid rgba(226, 232, 240, 0.8) !important;
+    }
+
+    /* 탭 네비게이션 프리미엄 세그먼트 컨트롤 디자인 */
+    div[data-testid="stTabs"] {
+        margin-top: 0.35rem !important;
+        margin-bottom: 1.25rem !important;
+    }
+
+    div[data-testid="stTabs"] [data-baseweb="tab-list"] {
+        gap: 8px !important;
+        background-color: #f1f5f9 !important;
+        padding: 6px !important;
+        border-radius: 14px !important;
+        border: 1px solid #e2e8f0 !important;
+        display: flex !important;
+        width: 100% !important;
+    }
+
+    div[data-testid="stTabs"] [data-baseweb="tab"] {
+        flex: 1 1 0 !important;
+        text-align: center !important;
+        justify-content: center !important;
+        border-radius: 10px !important;
+        padding: 10px 18px !important;
+        font-weight: 700 !important;
+        font-size: 0.95rem !important;
+        color: #475569 !important;
+        background-color: transparent !important;
+        border: none !important;
+        white-space: nowrap !important;
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    }
+
+    div[data-testid="stTabs"] [aria-selected="true"] {
+        background-color: #ffffff !important;
+        color: #1e3a8a !important;
+        font-weight: 800 !important;
+        box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08) !important;
+    }
+
+    /* Streamlit 기본 하단 밑줄 인디케이터 제거 (모던 필 스타일) */
+    div[data-testid="stTabs"] [data-baseweb="tab-border"] {
+        display: none !important;
+    }
+    div[data-testid="stTabs"] [data-baseweb="tab-highlight"] {
+        display: none !important;
     }
     
     /* 상단 공식 행정기관 배너 헤더 */
@@ -62,11 +125,12 @@ st.markdown("""
         margin-bottom: 8px;
     }
     .gov-title {
-        font-size: 1.45rem;
+        font-size: clamp(1.2rem, 3.5vw, 1.55rem);
         font-weight: 800;
         margin: 0;
         color: #ffffff !important;
         letter-spacing: -0.5px;
+        line-height: 1.35;
     }
     .gov-subtitle {
         font-size: 0.88rem;
